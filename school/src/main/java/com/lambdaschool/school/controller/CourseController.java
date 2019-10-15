@@ -25,7 +25,7 @@ public class CourseController
     @GetMapping(value = "/courses", produces = {"application/json"})
     public ResponseEntity<?> listAllCourses(HttpServletRequest request)
     {
-        logger.warn("Student endpoint was accessed at " + request.getRequestURI());
+        logger.info("Student endpoint was accessed at " + request.getRequestURI());
         ArrayList<Course> myCourses = courseService.findAll();
         return new ResponseEntity<>(myCourses, HttpStatus.OK);
     }
@@ -33,14 +33,14 @@ public class CourseController
     @GetMapping(value = "/studcount", produces = {"application/json"})
     public ResponseEntity<?> getCountStudentsInCourses(HttpServletRequest request)
     {
-        logger.warn("Student endpoint was accessed at " + request.getRequestURI());
+        logger.info("Student endpoint was accessed at " + request.getRequestURI());
         return new ResponseEntity<>(courseService.getCountStudentsInCourse(), HttpStatus.OK);
     }
 
     @DeleteMapping("/courses/{courseid}")
     public ResponseEntity<?> deleteCourseById(@PathVariable long courseid, HttpServletRequest request)
     {
-        logger.warn("Student endpoint was accessed at " + request.getRequestURI());
+        logger.info("Student endpoint was accessed at " + request.getRequestURI());
         courseService.delete(courseid);
         return new ResponseEntity<>(HttpStatus.OK);
     }

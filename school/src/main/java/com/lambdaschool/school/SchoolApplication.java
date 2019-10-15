@@ -17,8 +17,8 @@ public class SchoolApplication
     public static void main(String[] args)
     {
 
-        ApplicationContext ctx = SpringApplication.run(SchoolApplication.class, args);
         //will return the bean I spelled out, or nothing. Everything works or my exceptions won't work.
+        ApplicationContext ctx = SpringApplication.run(SchoolApplication.class, args);
         DispatcherServlet dispatcherServlet = (DispatcherServlet) ctx.getBean("dispatcherServlet");
         dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
     }

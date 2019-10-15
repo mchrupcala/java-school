@@ -31,7 +31,7 @@ public class StudentController
     @GetMapping(value = "/students", produces = {"application/json"})
     public ResponseEntity<?> listAllStudents(HttpServletRequest request)
     {
-        logger.warn("Student endpoint was accessed at " + request.getRequestURI());
+        logger.info("Student endpoint was accessed at " + request.getRequestURI());
         List<Student> myStudents = studentService.findAll();
         return new ResponseEntity<>(myStudents, HttpStatus.OK);
     }
@@ -42,7 +42,7 @@ public class StudentController
             @PathVariable
                     Long StudentId, HttpServletRequest request)
     {
-        logger.warn("Student endpoint was accessed at " + request.getRequestURI());
+        logger.info("Student endpoint was accessed at " + request.getRequestURI());
         Student r = studentService.findStudentById(StudentId);
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
@@ -53,7 +53,7 @@ public class StudentController
     public ResponseEntity<?> getStudentByNameContaining(
             @PathVariable String name, HttpServletRequest request)
     {
-        logger.warn("Student endpoint was accessed at " + request.getRequestURI());
+        logger.info("Student endpoint was accessed at " + request.getRequestURI());
         List<Student> myStudents = studentService.findStudentByNameLike(name);
         return new ResponseEntity<>(myStudents, HttpStatus.OK);
     }
@@ -66,7 +66,7 @@ public class StudentController
                                            @RequestBody
                                                    Student newStudent, HttpServletRequest request) throws URISyntaxException
     {
-        logger.warn("Student endpoint was accessed at " + request.getRequestURI());
+        logger.info("Student endpoint was accessed at " + request.getRequestURI());
         newStudent = studentService.save(newStudent);
 
         // set the location header for the newly created resource
@@ -85,7 +85,7 @@ public class StudentController
             @PathVariable
                     long Studentid, HttpServletRequest request)
     {
-        logger.warn("Student endpoint was accessed at " + request.getRequestURI());
+        logger.info("Student endpoint was accessed at " + request.getRequestURI());
         studentService.update(updateStudent, Studentid);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -96,7 +96,7 @@ public class StudentController
             @PathVariable
                     long Studentid, HttpServletRequest request)
     {
-        logger.warn("Student endpoint was accessed at " + request.getRequestURI());
+        logger.info("Student endpoint was accessed at " + request.getRequestURI());
         studentService.delete(Studentid);
         return new ResponseEntity<>(HttpStatus.OK);
     }
